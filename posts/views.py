@@ -6,11 +6,22 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request, postID):
+	postID = int(postID)
 	try:
 		p = Post.objects.get(postID=postID)
+		prev = Post.objects.filter(postID=postID-1)
+		if len(prev) < 1:
+			prev = 0
+		else:
+			prev = prev[0].postID
+		nex = Post.objects.filter(postID=postID+1)
+		if len(nex) < 1:
+			nex = postID
+		else:
+			nex = nex[0].postID
 		l = p.content.split("\n")
 		t = loader.get_template("posts/post.html")
-		c = Context({"title": p.title, "paragraphs": l})
+		c = Context({"title": p.title, "paragraphs": l, "prev": prev, "nex": nex})
 		return HttpResponse(t.render(c))
 	except Post.DoesNotExist:
 		return "404"

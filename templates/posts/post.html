@@ -1,14 +1,53 @@
 <html>
 	<head>
+		<style type="text/css">
+			.NavButton {
+				display: inline;
+				background: #cccc99;
+			}
+			.NavBar {
+				display: inline;
+				width: 50%;
+			}
+
+			a:link {
+			  	text-decoration:none;
+				color:black;
+			}
+			a:visited {
+			  	text-decoration:none;
+				color:black;
+			}
+			a:hover {
+			  	text-decoration:none;
+				color:navy;
+			}
+			a:active {
+			  	text-decoration:none;
+				color:navy;
+			}
+		</style>
 		<title>Systems: {{ title }}</title>
 	</head>
 	<body>
-		<h1 style="text-align:center">Systems</h1>
+		<h1 style="text-align:center">SYSTEMS</h1>
 		<h3 style="text-align:center">{{ title }}</h3>
-		{% for p in paragraphs %}
-			<p style="margin:auto; width:50%; text-ident:50pt;">
-				&nbsp; &nbsp; &nbsp;{{ p }}
-			</p>
-		{% endfor %}
+
+		<center>
+			<div id="NavBar">
+				<a href="../{{ prev }}"><div class="NavButton">&nbsp;&nbsp;&nbsp;&lt&nbsp;&nbsp;&nbsp;</div></a>
+				<a href="../{{ nex }}"><div class="NavButton">&nbsp;&nbsp;&nbsp;&gt&nbsp;&nbsp;&nbsp;</div></a>
+			</div>
+		</center>
+
+		<div style="margin: auto; width:50%; text-ident:50pt;">
+			<div>
+				{% for p in paragraphs %}
+					<p style="margin:auto; width:100%; text-ident:50pt;">
+						&nbsp; &nbsp; &nbsp;{{ p }}
+					</p>
+				{% endfor %}
+			</div>
+		</div>
 	</body>
 </html>

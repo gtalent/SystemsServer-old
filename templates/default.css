@@ -1,0 +1,8 @@
+div {
+	float: inherit;
+}
+.NavButton {
+	float: inherit;
+	width: 50px;
+	background: #cccc99;
+}
