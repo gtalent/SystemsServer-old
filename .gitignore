@@ -1,3 +1,5 @@
 db.sqlite
 *.pyc
+*.pyo
 */*.pyc
+*/*.pyo

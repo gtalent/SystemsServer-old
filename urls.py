@@ -2,6 +2,8 @@ from django.conf.urls.defaults import patterns, include, url
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
+import settings
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -14,7 +16,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^posts/(?P<postID>\d+)/$', 'posts.views.post'),
-    url(r'^posts/$', 'posts.views.index'),
-    url(r'^$', 'posts.views.index'),
+    url(r'^posts/(?P<postID>\d+)/$', 'Systems.posts.views.post'),
+    url(r'^posts/$', 'Systems.posts.views.index'),
+    url(r'^$', 'Systems.posts.views.index'),
 )
