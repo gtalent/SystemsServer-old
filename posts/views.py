@@ -26,7 +26,9 @@ def post(request, postID):
 			nex = nex[0].postID
 		l = p.content.split("\n")
 		t = loader.get_template("posts/post.html")
-		c = Context({"title": p.title, "paragraphs": l, "prev": prev, "nex": nex, "addr_prefix": address})
+		note = p.note.split("\n")
+		has_note = p.note != ""
+		c = Context({"title": p.title, "paragraphs": l, "prev": prev, "nex": nex, "addr_prefix": address, "note": note, "has_note": has_note})
 		return HttpResponse(t.render(c))
 	except Post.DoesNotExist:
 		return "404"

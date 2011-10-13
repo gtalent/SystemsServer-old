@@ -20,11 +20,11 @@
 			}
 			a:hover {
 			  	text-decoration:none;
-				color:navy;
+				color:white;
 			}
 			a:active {
 			  	text-decoration:none;
-				color:navy;
+				color:white;
 			}
 		</style>
 		<title>Systems: {{ title }}</title>
@@ -51,6 +51,17 @@
 						&nbsp; &nbsp; &nbsp;{{ p }}
 					</p>
 				{% endfor %}
+			</div>
+			<div>
+				{% if has_note %}
+				<br><br>
+				<strong>Note:</strong>
+				{% for p in note %}
+					<p style="margin:auto; width:100%; text-ident:50pt;">
+						&nbsp; &nbsp; &nbsp;{{ p }}
+					</p>
+				{% endfor %}
+				{% endif  %}
 			</div>
 		</div>
 	</body>
