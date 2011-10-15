@@ -52,8 +52,8 @@
 					</p>
 				{% endfor %}
 			</div>
+			{% if has_note %}
 			<div>
-				{% if has_note %}
 				<br><br>
 				<strong>Note:</strong>
 				{% for p in note %}
@@ -61,8 +61,8 @@
 						&nbsp; &nbsp; &nbsp;{{ p }}
 					</p>
 				{% endfor %}
-				{% endif  %}
 			</div>
+			{% endif  %}
 		</div>
 	</body>
 </html>
