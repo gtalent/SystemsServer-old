@@ -7,7 +7,8 @@ import Systems
 # Create your views here.
 
 def index(request):
-	return post(request, 0)
+	postID = request.session.get('bookmark', 0)
+	return post(request, postID)
 
 def post(request, postID):
 	postID = int(postID)
@@ -29,6 +30,7 @@ def post(request, postID):
 		note = p.note.split("\n")
 		has_note = p.note != ""
 		c = Context({"title": p.title, "paragraphs": l, "prev": prev, "nex": nex, "addr_prefix": address, "note": note, "has_note": has_note})
+		request.session["bookmark"] = postID
 		return HttpResponse(t.render(c))
 	except Post.DoesNotExist:
 		return "404"
