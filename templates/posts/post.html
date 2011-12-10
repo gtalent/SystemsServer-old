@@ -48,7 +48,7 @@
 			<div>
 				{% for p in paragraphs %}
 					<p style="margin:auto; width:100%; text-ident:50pt;">
-						&nbsp; &nbsp; &nbsp;{{ p }}
+						&nbsp; &nbsp; &nbsp;{{ p|safe }}
 					</p>
 				{% endfor %}
 			</div>
@@ -62,7 +62,7 @@
 					</p>
 				{% endfor %}
 			</div>
-			{% endif  %}
+			{% endif %}
 		</div>
 	</body>
 </html>

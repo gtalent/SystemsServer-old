@@ -3,6 +3,7 @@ from django.template import Context, loader
 from Systems.posts.models import Post
 from django.http import HttpResponse
 import Systems
+import ml
 
 # Create your views here.
 
@@ -26,6 +27,9 @@ def post(request, postID):
 		else:
 			nex = nex[0].postID
 		l = p.content.split("\n")
+		# process mark up language
+		for i in range(len(l)):
+			l[i] = ml.toHTML(l[i])
 		t = loader.get_template("posts/post.html")
 		note = p.note.split("\n")
 		has_note = p.note != ""
