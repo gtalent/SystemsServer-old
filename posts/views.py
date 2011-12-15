@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import Context, loader
-from Systems.posts.models import Post
+from models import Post
 from django.http import HttpResponse
 import Systems
 import ml
