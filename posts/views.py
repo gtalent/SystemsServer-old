@@ -7,7 +7,7 @@ import ml
 # Create your views here.
 
 def index(request):
-	postID = request.session.get('bookmark', 0)
+	postID = request.session.get('bookmark', 1)
 	return post(request, postID)
 
 def post(request, postID):
