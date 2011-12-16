@@ -2,7 +2,6 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import Context, loader
 from models import Post
 from django.http import HttpResponse
-import Systems
 import ml
 
 # Create your views here.
@@ -14,7 +13,6 @@ def index(request):
 def post(request, postID):
 	postID = int(postID)
 	try:
-		address = Systems.settings.ROOT_URL
 		p = Post.objects.get(postID=postID)
 		prev = Post.objects.filter(postID=postID-1)
 		if len(prev) < 1:
@@ -33,7 +31,7 @@ def post(request, postID):
 		t = loader.get_template("posts/post.html")
 		note = p.note.split("\n")
 		has_note = p.note != ""
-		c = Context({"title": p.title, "paragraphs": l, "prev": prev, "nex": nex, "addr_prefix": address, "note": note, "has_note": has_note})
+		c = Context({"title": p.title, "paragraphs": l, "prev": prev, "nex": nex, "note": note, "has_note": has_note})
 		request.session["bookmark"] = postID
 		return HttpResponse(t.render(c))
 	except Post.DoesNotExist:
